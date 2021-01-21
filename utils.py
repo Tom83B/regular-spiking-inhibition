@@ -1,3 +1,5 @@
+"""Various plotting, interpolating and statistical utilities"""
+
 import numpy as np
 import functools
 from scipy.interpolate import UnivariateSpline, griddata
@@ -5,6 +7,7 @@ from scipy.signal import savgol_filter
 import matplotlib.pyplot as plt
 
 class StatsTracker:
+    """Online computation of mean and standard deviation"""
     def __init__(self):
         self.n = 0
         self.average = None
@@ -29,6 +32,7 @@ class StatsTracker:
         return np.sqrt(self.var)
 
 def linear_roots(xx, yy):
+    """Find roots of a function by linear interpolation"""
     xx = np.array(xx)
     yy = np.array(yy)
     
@@ -65,6 +69,7 @@ def cv_scaler(cv):
     return cv / 0.8
 
 class SpaceScan:
+    """Class for working with simulation results"""
     def __init__(self, res, fill=False, q=10/3, dlif=False):
         self.dlif = dlif
         self.res = {}
